@@ -15,8 +15,13 @@ header h1 {
   color: #0077cc;
   margin: 0.5em 0 1em;
 }
+header h2 {
+  font-size: 1.4rem;
+  color: #f09231;
+  margin: 0.1em 0.1 0.1em;
+}
 .reproductor {
-  padding: 1em;
+  padding: 0.1em;
 }
 .btn-whatsapp {
   display: inline-block;
