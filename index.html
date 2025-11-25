@@ -4,51 +4,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>103.1 FM - Radio Transparencia</title>
-  <link rel="stylesheet" href="css/styles.css"/>
+  <title>Producciones Transparencia</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
-    <img src="img/logo.png" alt="Logo Radio Transparencia" class="logo"/>
-    <h1>103.1 FM - Radio Transparencia</h1>
-    <h2>Dale Play para escuchar</h2>
-  </header>
+  <div class="container">
+    <main>
+      <!-- Tarjeta para Radio Transparencia -->
+      <article class="radio-card">
+        <header class="radio-header">
+          <img src="img/logo.png" alt="Logo Radio Transparencia" class="logo"/>
+          <div class="radio-info">
+            <h1>103.1 FM - Radio Transparencia</h1>
+            <h2>Dale Play para escuchar</h2>
+            <canvas class="visualizer" id="visualizer-transparencia" width="300" height="50"></canvas>
+            <p id="song-title" class="song-title">...</p>
+          </div>
+        </header>
+        <div class="reproductor">
+          <!-- Reproductor Personalizado para Radio Transparencia -->
+          <audio id="audio-player-transparencia" src="https://stream.zeno.fm/a5tnl0xjodbvv" preload="none" crossOrigin="anonymous"></audio>
+          
+          <div class="custom-player">
+            <img id="album-art" src="img/logo.png" alt="Carátula del álbum" class="album-art-side">
+            <div class="player-controls-side">
+              <button id="play-pause-btn-transparencia" class="play-pause-btn">
+                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="36px" height="36px"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="36px" height="36px" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+              </button>
+              <div class="volume-control">
+                <svg class="volume-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                <input type="range" id="volume-slider" min="0" max="100" value="80">
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
 
-  <section class="reproductor">
-    <iframe width="100%" height="122" src="https://players.rcast.net/fantastic/72843" frameborder="0" scrolling="no" allow="autoplay"></iframe> 
-    <div style="overflow:hidden; height:0px; width:0px;">
-      <a href="https://www.rcast.net" title="Internet Radio Hosting">RCAST.NET</a>
-    </div>
+      <!-- Tarjeta para Extasis Radio -->
+      <article class="radio-card">
+        <header class="radio-header">
+          <img src="img/exlogo.png" alt="Logo Extasis Radio" class="logo"/>
+          <div class="radio-info">
+            <h1>93.5 FM - Extasis Radio</h1>
+            <h2>Dale Play para escuchar</h2>
+            <canvas class="visualizer" id="visualizer-extasis" width="300" height="50"></canvas>
+            <p id="song-title-extasis" class="song-title">...</p>
+          </div>
+        </header>
+        <div class="reproductor">
+          <!-- Reproductor Personalizado para Extasis Radio -->
+          <audio id="audio-player-extasis" src="https://stream.playerlive.info:8146/extasis.aac" preload="none" crossOrigin="anonymous"></audio>
+          
+          <div class="custom-player">
+            <img id="album-art-extasis" src="img/exlogo.png" alt="Carátula del álbum" class="album-art-side">
+            <div class="player-controls-side">
+              <button id="play-pause-btn-extasis" class="play-pause-btn">
+                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="36px" height="36px"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="36px" height="36px" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+              </button>
+              <div class="volume-control">
+                <svg class="volume-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                <input type="range" id="volume-slider-extasis" min="0" max="100" value="80">
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
 
-      <header>
-    <img src="img/exlogo.png" alt="Logo Extasis Radio" class="logo"/>
-    <h1>93.5 FM - Extasis Radio</h1>
-    <h2>Dale Play para escuchar</h2>
-  </header>
-    
-    <iframe width="100%" height="122" src="https://players.rcast.net/fantastic/72898" frameborder="0" scrolling="no" allow="autoplay"></iframe> 
-    <div style="overflow:hidden; height:0px; width:0px;">
-      <a href="https://www.rcast.net" title="Internet Radio Hosting">RCAST.NET</a>
-    </div>
-    
-    <div style="text-align: center; margin-top: 20px;">
-      <a class="btn-whatsapp" href="https://wa.me/50433299088?text=Hola%2C%20quiero%20enviar%20saludos%21" target="_blank">
-        💬 Enviar mensaje por WhatsApp
-      </a>
-    </div>
-  </section>
+      <!-- Botones y Redes Sociales -->
+      <section class="acciones">
+        <a class="btn-whatsapp" href="https://wa.me/50433299088?text=Hola%2C%20quiero%20enviar%20saludos%21" target="_blank">
+          💬 Enviar mensaje por WhatsApp
+        </a>
+        <div class="redes">
+          <a href="https://www.facebook.com/radiotransparencia103.1" target="_blank" title="Facebook" class="icono-red">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.407.593 24 1.324 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.324C24 .593 23.407 0 22.676 0z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@alternativa107" target="_blank" title="TikTok" class="icono-red">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M9.13 21.11a5.99 5.99 0 0 1 0-11.98c.225 0 .446.016.664.047v3.176A2.824 2.824 0 0 0 9.13 10a2.825 2.825 0 1 0 2.825 2.825V3h2.824a5.648 5.648 0 0 0 4.008 4.008v2.848a8.472 8.472 0 0 1-4.008-1.024v7.173a5.99 5.99 0 0 1-5.649 5.105z"/></svg>
+          </a>
+        </div>
+      </section>
 
-  <section class="redes">
-    <a href="https://www.facebook.com/radiotransparencia103.1" target="_blank" title="Facebook" class="icono-red">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#1877F2" viewBox="0 0 24 24"><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.407.593 24 1.324 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.324C24 .593 23.407 0 22.676 0z"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@alternativa107" target="_blank" title="TikTok" class="icono-red">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#000000" viewBox="0 0 24 24"><path d="M9.13 21.11a5.99 5.99 0 0 1 0-11.98c.225 0 .446.016.664.047v3.176A2.824 2.824 0 0 0 9.13 10a2.825 2.825 0 1 0 2.825 2.825V3h2.824a5.648 5.648 0 0 0 4.008 4.008v2.848a8.472 8.472 0 0 1-4.008-1.024v7.173a5.99 5.99 0 0 1-5.649 5.105z"/></svg>
-    </a>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Radio Transparencia - Todos los derechos reservados.</p>
-  </footer>
+      <footer>
+        <p>&copy; 2025 Radio Transparencia - Todos los derechos reservados.</p>
+      </footer>
+    </main>
+  </div>
+  <script src="css/visualizer.js"></script>
 </body>
 </html>
