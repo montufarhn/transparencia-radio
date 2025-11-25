@@ -192,7 +192,7 @@ footer {
   color: #555;
 }
 
-#volume-slider {
+.volume-slider { /* Cambiado de #volume-slider a .volume-slider */
   -webkit-appearance: none;
   appearance: none;
   width: 100px;
@@ -202,12 +202,12 @@ footer {
   outline: none;
 }
 
-#volume-slider::-webkit-slider-thumb {
+.volume-slider::-webkit-slider-thumb { /* Cambiado de #volume-slider a .volume-slider */
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
-  background: #0077cc; /* Color azul de Transparencia */
+  background: #555; /* Un color neutro para ambos */
   cursor: pointer;
   border-radius: 50%;
 }
