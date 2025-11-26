@@ -172,6 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     songTitleId: 'song-title-extasis',
     defaultAlbumArt: 'img/exlogo.png',
     visualizerColor: '#e4002b',
-    metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/xfwg9mmhrd0uv/',
+    metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/cp63pctjeuuuv/',
   });
 });
