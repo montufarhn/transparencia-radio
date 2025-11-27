@@ -8,6 +8,25 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <nav class="navbar">
+      <!-- Botón de hamburguesa para móviles -->
+      <button class="menu-toggle" aria-label="Toggle navigation">
+          <span class="menu-toggle-icon"></span>
+          <span class="menu-toggle-icon"></span>
+          <span class="menu-toggle-icon"></span>
+      </button>
+      <ul class="navbar-nav">
+          <li class="nav-item"><a href="#">Inicio</a></li>
+          <li class="nav-item"><a href="#">Quienes somos</a></li>
+          <li class="nav-item"><a href="#">Actualidad</a></li>
+          <li class="nav-item"><a href="#">Agencia Animal Digital</a></li>
+          <li class="nav-item"><a href="#">Contáctanos</a></li>
+          <li class="nav-item"><a href="#">Galería</a></li>
+          <li class="nav-item"><a href="#">Staff</a></li>
+          <li class="nav-item"><a href="#">Anúnciate con nosotros</a></li>
+      </ul>
+  </nav>
+  <div class="overlay"></div>
   <div class="container">
     <main>
       <!-- Tarjeta para Radio Transparencia -->
@@ -94,6 +113,25 @@
       </footer>
     </main>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbarNav = document.querySelector('.navbar-nav');
+        const overlay = document.querySelector('.overlay');
+
+        function toggleMenu() {
+            navbarNav.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        if (menuToggle && navbarNav && overlay) {
+            menuToggle.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu); // Cierra el menú al hacer clic en el overlay
+        }
+    });
+  </script>
   <script src="css/visualizer.js"></script>
 </body>
 </html>

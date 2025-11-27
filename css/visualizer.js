@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const allAudioPlayers = []; // Array para mantener un registro de todos los elementos de audio
+
+  // Función global para actualizar el fondo del body
+  function updateBodyBackground(colors) {
+    if (colors && colors.length === 2) {
+      document.body.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+    } else {
+      // Fondo por defecto si no se proporcionan colores (o si todas las radios están pausadas)
+      document.body.style.background = 'linear-gradient(135deg, #e0e0e0, #c0c0c0)';
+    }
+  }
+
   /**
    * Configura un reproductor de radio personalizado para una estación de Zeno.fm.
    * @param {object} config - La configuración para el reproductor.
@@ -19,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let dataArray;
     let lastSongTitle = '';
     let metadataEventSource = null;
+
+    allAudioPlayers.push(audioPlayer); // Añade este reproductor a la lista global
 
     function setupAudioContext() {
       if (!audioContext) {
@@ -44,6 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
         audioContext.resume();
       }
       if (audioPlayer.paused) {
+        // Pausa todos los demás reproductores antes de reproducir este
+        allAudioPlayers.forEach(player => {
+          if (player !== audioPlayer && !player.paused) {
+            player.pause();
+          }
+        });
         setupAudioContext();
         audioPlayer.play().catch(error => console.error("Error al reproducir:", error));
       } else {
@@ -65,11 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
       drawRealVisualizer();
       if (!lastSongTitle) songTitleElement.textContent = 'Cargando información...';
       if (!metadataEventSource) subscribeToMetadata();
+      updateBodyBackground(config.gradientColors); // Actualiza el fondo al iniciar la reproducción
     });
 
     audioPlayer.addEventListener('pause', () => {
       iconPlay.style.display = 'inline-block';
       iconPause.style.display = 'none';
+      // Si no hay ningún otro reproductor activo, vuelve al fondo por defecto
+      const anyOtherPlayerPlaying = allAudioPlayers.some(player => player !== audioPlayer && !player.paused);
+      if (!anyOtherPlayerPlaying) {
+        updateBodyBackground(null); // Pasa null para activar el fondo por defecto
+      }
     });
 
     audioPlayer.addEventListener('volumechange', () => {
@@ -160,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     defaultAlbumArt: 'img/logo.png',
     visualizerColor: '#0077cc',
     metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/a5tnl0xjodbvv/',
+    gradientColors: ['#0077cc', '#f09231'] // Azul y Naranja para Transparencia
   });
 
   // --- Configuración para Extasis Radio ---
@@ -173,5 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
     defaultAlbumArt: 'img/exlogo.png',
     visualizerColor: '#e4002b',
     metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/xfwg9mmhrd0uv/',
+    gradientColors: ['#e4002b', '#fcc200'] // Rojo y Amarillo para Extasis
   });
 });
