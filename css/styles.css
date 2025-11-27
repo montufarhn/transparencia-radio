@@ -237,10 +237,10 @@ footer {
         padding: 0 15px; /* Añade un poco de padding a los lados de la barra */
     }
 
-    .navbar-nav {
-        display: flex; /* Mantenemos flex para que los estilos internos funcionen */
-        flex-direction: column; /* Apila los elementos verticalmente */
-        background-color: #333; /* Un poco más oscuro para el menú lateral */
+    .menu-container {
+        /* display: flex;  Ya no es necesario aquí */
+        /* flex-direction: column; */
+        background-color: #333;
         position: fixed; /* Fijo en la pantalla para deslizarse sobre el contenido */
         top: 0;
         right: 0;
@@ -253,7 +253,14 @@ footer {
         transition: transform 0.3s ease-in-out; /* Animación de deslizamiento */
     }
 
-    .navbar-nav.active { transform: translateX(0); } /* Mueve el menú a su posición visible */
+    .menu-container.active { transform: translateX(0); } /* Mueve el menú a su posición visible */
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
 
     .nav-item a {
         padding: 12px 25px; /* Ajusta el padding para elementos verticales */
