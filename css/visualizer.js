@@ -200,6 +200,5 @@ document.addEventListener('DOMContentLoaded', () => {
     defaultAlbumArt: 'img/exlogo.png',
     visualizerColor: '#e4002b',
     metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/xfwg9mmhrd0uv/',
-    gradientColors: ['#e4002b', '#fcc200'] // Rojo y Amarillo para Extasis
   });
 });
