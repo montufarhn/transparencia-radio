@@ -34,7 +34,7 @@ body::after {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  padding: 20px 0; /* Añadimos padding vertical para separar el contenido del menú/footer */
+  padding: 20px 15px; /* Añadimos padding horizontal para que el contenido no toque los bordes en móvil */
 }
 
 /* --- Estilos del Menú de Navegación (Navbar) --- */
@@ -382,4 +382,15 @@ footer p {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-style: italic;
+}
+
+/* --- Estilos Responsivos para el Reproductor --- */
+@media (max-width: 400px) {
+  .custom-player {
+    gap: 10px; /* Reducimos el espacio entre el logo y los controles */
+  }
+  .album-art-side {
+    width: 100px; /* Hacemos el logo un poco más pequeño */
+    height: 100px;
+  }
 }
