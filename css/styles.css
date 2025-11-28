@@ -3,10 +3,31 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
-  padding: 0; /* Eliminamos el padding para que el menú ocupe todo el ancho */
-  background: linear-gradient(135deg, #e0e0e0, #c0c0c0); /* Fondo degradado por defecto */
+  padding: 0;
   color: #1d2129;
-  transition: background 1s ease-in-out; /* Transición suave para el cambio de fondo */
+}
+
+/* Capas de fondo para la transición suave */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Detrás de todo el contenido */
+}
+
+body::before {
+  background: var(--before-bg, linear-gradient(135deg, #e0e0e0, #c0c0c0)); /* Fondo inicial */
+  opacity: 1;
+}
+
+body::after {
+  background: var(--after-bg, linear-gradient(135deg, #e0e0e0, #c0c0c0)); /* El nuevo fondo aparecerá aquí */
+  opacity: var(--after-opacity, 0);
+  transition: opacity 1s ease-in-out; /* La transición se aplica a la opacidad */
 }
 
 .container {
@@ -167,31 +188,6 @@ body {
   display: block; /* Evita espacios extra debajo del iframe */
 }
 
-/* Sección de acciones (WhatsApp y redes) */
-.acciones {
-  text-align: center;
-  padding: 10px 0;
-  margin-bottom: 25px;
-}
-
-.btn-whatsapp {
-  display: inline-block;
-  background-color: #25D366;
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 50px; /* Totalmente redondeado */
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 15px -5px rgba(37, 211, 102, 0.7);
-}
-
-.btn-whatsapp:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px -5px rgba(37, 211, 102, 0.9);
-}
-
 .redes {
   display: flex;
   justify-content: center;
@@ -199,21 +195,42 @@ body {
 }
 
 .icono-red {
-  color: #8a8d91;
+  color: #fff; /* Color blanco para que combine con el texto del footer */
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .icono-red:hover {
   transform: scale(1.2);
-  color: #1d2129;
+  color: #f0f0f0; /* Un blanco más brillante al pasar el mouse */
 }
 
 /* Footer */
 footer {
   text-align: center;
   font-size: 0.85rem;
-  color: #65676b;
+  color: #f0f0f0; /* Texto blanco/gris claro para contraste */
+  position: fixed; /* Fija el footer */
+  bottom: 15px; /* Espacio desde la parte inferior para el efecto flotante */
+  left: 15px; /* Espacio desde la izquierda */
+  right: 15px; /* Espacio desde la derecha */
+  width: auto; /* El ancho se define por los espacios laterales */
+  z-index: 100; /* Asegura que esté por encima de otro contenido */
+  display: flex;
+  justify-content: space-between; /* Distribuye el texto y los iconos */
+  align-items: center;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  padding: 10px 20px; /* Padding interno */
+  background-color: rgba(40, 40, 40, 0.85); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(10px); /* Efecto "vidrio esmerilado" para un look moderno */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); /* Sombra para el efecto flotante */
+  transition: all 0.3s ease; /* Transición suave para cambios de tamaño */
 }
+
+footer p {
+  margin: 0;
+}
+
 
 /* --- Estilos Responsivos con un "toque Bootstrap" para el contenedor --- */
 /* Para tablets */
@@ -233,7 +250,7 @@ footer {
 /* --- Estilos Responsivos para el Menú --- */
 @media (max-width: 768px) { /* Se activa en pantallas de 768px o menos */
     .navbar {
-        justify-content: space-between; /* Empuja el botón de hamburguesa a la derecha */
+        justify-content: flex-end; /* Alinea el botón de hamburguesa a la derecha */
         padding: 0 15px; /* Añade un poco de padding a los lados de la barra */
     }
 
@@ -270,6 +287,20 @@ footer {
     .nav-item:last-child a { border-bottom: none; } /* Elimina el borde del último elemento */
     .menu-toggle { display: block; } /* Muestra el botón de hamburguesa */
 }
+
+/* Estilos responsivos para el footer */
+@media (max-width: 500px) {
+  footer {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    gap: 10px; /* Añade espacio entre el texto y los iconos */
+    padding: 15px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
+}
+
+
 .visualizer {
   margin-top: 10px;
 }

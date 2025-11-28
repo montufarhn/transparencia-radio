@@ -1,13 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
   const allAudioPlayers = []; // Array para mantener un registro de todos los elementos de audio
+  let backgroundState = 'before'; // Para alternar entre ::before y ::after
 
   // Función global para actualizar el fondo del body
   function updateBodyBackground(colors) {
-    if (colors && colors.length === 2) {
-      document.body.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+    const newGradient = (colors && colors.length === 2)
+      ? `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`
+      : 'linear-gradient(135deg, #e0e0e0, #c0c0c0)';
+
+    const beforeElement = document.body; // En JS, accedemos a los pseudo-elementos a través de su elemento padre
+    const afterElement = document.body;
+
+    if (backgroundState === 'before') {
+      // El fondo actual está en ::before, el nuevo va a ::after
+      afterElement.style.setProperty('--after-bg', newGradient); // Usamos una variable CSS para el fondo de ::after
+      afterElement.style.setProperty('--after-opacity', '1');
+      backgroundState = 'after';
     } else {
-      // Fondo por defecto si no se proporcionan colores (o si todas las radios están pausadas)
-      document.body.style.background = 'linear-gradient(135deg, #e0e0e0, #c0c0c0)';
+      // El fondo actual está en ::after, el nuevo va a ::before
+      beforeElement.style.setProperty('--before-bg', newGradient);
+      afterElement.style.setProperty('--after-opacity', '0');
+      backgroundState = 'before';
     }
   }
 
@@ -20,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const playPauseBtn = document.getElementById(config.playPauseBtnId);
     const visualizerCanvas = document.getElementById(config.visualizerId);
     const volumeSlider = document.getElementById(config.volumeSliderId);
-    const albumArt = document.getElementById(config.albumArtId);
-    const songTitleElement = document.getElementById(config.songTitleId);
 
     const iconPlay = playPauseBtn.querySelector('.icon-play');
     const iconPause = playPauseBtn.querySelector('.icon-pause');
@@ -29,8 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let analyser;
     let source;
     let dataArray;
-    let lastSongTitle = '';
-    let metadataEventSource = null;
 
     allAudioPlayers.push(audioPlayer); // Añade este reproductor a la lista global
 
@@ -61,11 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
         // Pausa todos los demás reproductores antes de reproducir este
         allAudioPlayers.forEach(player => {
           if (player !== audioPlayer && !player.paused) {
-            player.pause();
+            player.pause(); // Pausamos primero
+            player.src = ''; // Vaciamos el src para detener el stream y el buffer
+            player.load(); // Forzamos la descarga del stream
+
+            // Forzar la actualización del icono del reproductor detenido
+            const otherPlayerBtn = document.querySelector(`[data-player-id="${player.id}"]`);
+            if (otherPlayerBtn) {
+              otherPlayerBtn.querySelector('.icon-play').style.display = 'inline-block';
+              otherPlayerBtn.querySelector('.icon-pause').style.display = 'none';
+            }
           }
         });
+
+        // Si el src de este reproductor está vacío o no coincide con la URL del stream,
+        // lo restauramos y forzamos la recarga para obtener el stream en vivo.
+        if (audioPlayer.src !== config.streamUrl) {
+          audioPlayer.src = config.streamUrl;
+          audioPlayer.load(); // Es crucial llamar a load() después de cambiar el src
+        }
+
         setupAudioContext();
-        audioPlayer.play().catch(error => console.error("Error al reproducir:", error));
+        const playPromise = audioPlayer.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => console.error("Error al reproducir:", error));
+        }
       } else {
         audioPlayer.pause();
       }
@@ -73,6 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     volumeIcon.addEventListener('click', () => toggleMute());
     volumeIconMuted.addEventListener('click', () => toggleMute());
+
+    // Añadimos un atributo de datos para poder encontrar este botón más tarde
+    playPauseBtn.dataset.playerId = config.audioPlayerId;
 
     function toggleMute() {
       audioPlayer.muted = !audioPlayer.muted;
@@ -83,9 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       iconPlay.style.display = 'none';
       iconPause.style.display = 'inline-block';
       drawRealVisualizer();
-      if (!lastSongTitle) songTitleElement.textContent = 'Cargando información...';
-      if (!metadataEventSource) subscribeToMetadata();
-      updateBodyBackground(config.gradientColors); // Actualiza el fondo al iniciar la reproducción
+      updateBodyBackground(config.gradientColors);
     });
 
     audioPlayer.addEventListener('pause', () => {
@@ -101,44 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
     audioPlayer.addEventListener('volumechange', () => {
       updateMuteIcon();
     });
-
-    function subscribeToMetadata() {
-      metadataEventSource = new EventSource(config.metadataUrl);
-      metadataEventSource.onmessage = async (event) => {
-        try {
-          const streamData = JSON.parse(event.data);
-          const songTitle = (streamData.streamTitle || '').trim();
-          if (songTitle && songTitle !== lastSongTitle) {
-            lastSongTitle = songTitle;
-            songTitleElement.textContent = songTitle;
-            fetchAlbumArt(songTitle);
-          }
-        } catch (error) {
-          console.error(`Error al procesar metadatos de ${config.audioPlayerId}:`, error);
-        }
-      };
-      metadataEventSource.onerror = (error) => {
-        console.error(`Error en EventSource de ${config.audioPlayerId}:`, error);
-      };
-    }
-
-    async function fetchAlbumArt(songTitle) {
-      try {
-        const searchTerm = songTitle.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
-        const itunesUrl = `https://itunes.apple.com/search?term=${encodeURIComponent(searchTerm)}&entity=song&limit=1`;
-        const response = await fetch(itunesUrl);
-        const data = await response.json();
-
-        if (data.resultCount > 0 && data.results[0].artworkUrl100) {
-          albumArt.src = data.results[0].artworkUrl100.replace('100x100', '600x600');
-        } else {
-          albumArt.src = config.defaultAlbumArt;
-        }
-      } catch (error) {
-        console.error('Error al obtener carátula:', error);
-        albumArt.src = config.defaultAlbumArt;
-      }
-    }
 
     function drawRealVisualizer() {
       const ctx = visualizerCanvas.getContext('2d');
@@ -181,11 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
     playPauseBtnId: 'play-pause-btn-transparencia',
     visualizerId: 'visualizer-transparencia',
     volumeSliderId: 'volume-slider',
-    albumArtId: 'album-art',
-    songTitleId: 'song-title',
-    defaultAlbumArt: 'img/logo.png',
+    streamUrl: 'https://stream.zeno.fm/a5tnl0xjodbvv',
     visualizerColor: '#0077cc',
-    metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/a5tnl0xjodbvv/',
     gradientColors: ['#0077cc', '#f09231'] // Azul y Naranja para Transparencia
   });
 
@@ -195,11 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
     playPauseBtnId: 'play-pause-btn-extasis',
     visualizerId: 'visualizer-extasis',
     volumeSliderId: 'volume-slider-extasis',
-    albumArtId: 'album-art-extasis',
-    songTitleId: 'song-title-extasis',
-    defaultAlbumArt: 'img/exlogo.png',
+    streamUrl: 'https://stream.zeno.fm/cp63pctjeuuuv',
     visualizerColor: '#e4002b',
-    metadataUrl: 'https://api.zeno.fm/mounts/metadata/subscribe/xfwg9mmhrd0uv/',
     gradientColors: ['#e4002b', '#fcc200'] // Rojo y Amarillo para Extasis
   });
 });
