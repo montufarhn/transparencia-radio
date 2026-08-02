@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cambia el Nombre de la App Aquí -->
+    <string name="app_name">Poder Deportivo</string>
+    <string name="default_whatsapp_message">Hola, Poder Deportivo </string>
+    <string name="share_message">Hola, te comparto esta App</string>
+
+    <!-- Mensajes de Salida -->
+    <string name="exit_dialog_text">¿Qué es lo que quieres hacer?</string>
+    <string name="quit">Cerrar App</string>
+    <string name="minimize">Minimizar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="exit">Salir</string>
+    <string name="share_via">Compartir en</string>
+
+    <!-- Mensajes de Error -->
+    <string name="error_loading_radio">¡Error al cargar la radio!</string>
+    <string name="error_retry">No se pudo conectar a la transmisión&#8230;</string>
+    <string name="error_retry_later">Por favor, inténtalo de nuevo en unos segundos&#8230;</string>
+    <string name="empty_textview">Error al cargar los datos</string>
+    <string name="something_went_wrong">¡Algo salió mal!</string>
+    <string name="error_title">¡Error!</string>
+    <string name="internet_not_connected">Internet no conectado, \\n Por favor, revisa tu conexión a internet</string>
+    <string name="no_network">¡Fallo al conectar a la red!</string>
+
+    <!-- Notificaciones -->
+    <string name="notification_playing">Ahora</string>
+    <string name="audio_notification">Reproducción de medios en segundo plano</string>
+
+    <!-- Otros Textos -->
+    <string name="ok">OK</string>
+    <string name="volume_low">¡Sube el volumen!</string>
+    <string name="toggle_fullscreen">Alternar Pantalla Completa</string>
+    <string name="radio_playing_other">Ya se está reproduciendo otra estación. Presiona reproducir de nuevo para reproducir esta estación en su lugar.</string>
+    <string name="dialog_connection_title">Servidores inalcanzables</string>
+    <string name="dialog_connection_description">No podemos conectar con nuestras APIs.\n\n¡Por favor, asegúrate de haber configurado tus claves API y parámetros como se documenta!</string>
+    <string name="dialog_internet_title">Sin internet</string>
+    <string name="dialog_internet_description">Parece que no tienes conexión a internet, esta aplicación requiere internet para cargar el contenido.</string>
+    <string name="image">Imagen</string>
+    <string name="loading">Cargando...</string>
+    <string name="play">Reproducir</string>
+    <string name="stop">Detener</string>
+    <string name="no_internet">Sin Internet</string>
+    <string name="image_content_description">Descripción del contenido</string>
+    <string name="navigation_drawer_open">Abrir el menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar el menú de navegación</string>
+    <string name="unknown_song">Canción Desconocida</string>
+    <string name="unknown_artist">Artista Desconocido</string>
+    <string name="now_playing">Reproduciendo Ahora</string>
+    <string name="please_wait">Por Favor Espera</string>
+    <string name="app_share_msg">Déjame recomendarte esta aplicación\n\n</string>
+</resources>

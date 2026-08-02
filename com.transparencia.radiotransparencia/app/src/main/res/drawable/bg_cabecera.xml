@@ -1,0 +1,27 @@
+<vector xmlns:aapt="http://schemas.android.com/aapt" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:autoMirrored="true" android:height="425.53dp" android:viewportHeight="425.53" android:viewportWidth="600" android:width="425.53dp"
+    tools:ignore="VectorRaster">
+      
+    <path android:fillColor="@color/color_white" android:pathData="m600,132.26s-237.95,272.55 -433.26,284.02C59,422.61 0,385.83 0,385.83l0.04,39.7h599.96V132.26Z" android:strokeWidth="0"
+        tools:ignore="VectorRaster" />
+      
+    <path android:pathData="m0,0h600s-103,330 -403.52,410.08C86.65,432.78 0,385.83 0,385.83V0Z" android:strokeWidth="0">
+            
+        <aapt:attr name="android:fillColor">
+                  
+            <gradient android:centerX="460" android:centerY="-350.7" android:gradientRadius="1129.85" android:type="radial">
+                        
+                <item android:color="#00000000" android:offset="0.37"/>
+                <item android:color="#000000" android:offset="0.59"/>
+                      
+            </gradient>
+                
+        </aapt:attr>
+          
+    </path>
+      
+    <path android:fillColor="@color/color_light_primary" android:pathData="m600,0s-106.13,259.04 -326.83,376.43C128.54,453.37 0,385.83 0,385.83c0,0 150.29,101.84 362.39,-38.35 159.71,-105.56 237.61,-209.74 237.61,-209.74V0Z" android:strokeWidth="0"
+        tools:ignore="VectorRaster" />
+    
+</vector>
