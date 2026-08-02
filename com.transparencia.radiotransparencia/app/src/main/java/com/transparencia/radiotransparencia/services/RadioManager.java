@@ -1,4 +1,4 @@
-package com.la87hn.la87laprimera.services;
+package com.transparencia.radiotransparencia.services;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.os.IBinder;
 import androidx.media3.common.util.Log;
 import androidx.media3.common.util.UnstableApi;
 
-import com.la87hn.la87laprimera.utils.Tools;
+import com.transparencia.radiotransparencia.utils.Tools;
 
 @UnstableApi public class RadioManager {
 

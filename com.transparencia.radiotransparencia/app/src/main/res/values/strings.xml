@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Cambia el Nombre de la App Aquí -->
-    <string name="app_name">Poder Deportivo</string>
-    <string name="default_whatsapp_message">Hola, Poder Deportivo </string>
+    <string name="app_name">103.1 FM Radio Transparencia</string>
+    <string name="default_whatsapp_message">Hola, quiero enviar mis saludos  </string>
     <string name="share_message">Hola, te comparto esta App</string>
 
     <!-- Mensajes de Salida -->
@@ -24,8 +24,8 @@
     <string name="no_network">¡Fallo al conectar a la red!</string>
 
     <!-- Notificaciones -->
-    <string name="notification_playing">Ahora</string>
-    <string name="audio_notification">Reproducción de medios en segundo plano</string>
+    <string name="notification_playing">¡Estamos donde tú estás!</string>
+    <string name="audio_notification">¡Estamos donde tú estás!</string>
 
     <!-- Otros Textos -->
     <string name="ok">OK</string>

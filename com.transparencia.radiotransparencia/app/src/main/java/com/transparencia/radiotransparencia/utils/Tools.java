@@ -1,4 +1,4 @@
-package com.la87hn.la87laprimera.utils;
+package com.transparencia.radiotransparencia.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

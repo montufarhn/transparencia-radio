@@ -1,4 +1,4 @@
-package com.la87hn.la87laprimera.services;
+package com.transparencia.radiotransparencia.services;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -16,8 +16,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.media3.common.util.UnstableApi;
 
-import com.la87hn.la87laprimera.R;
-import com.la87hn.la87laprimera.activities.MainActivity;
+import com.transparencia.radiotransparencia.R;
+import com.transparencia.radiotransparencia.activities.MainActivity;
 
 @UnstableApi
 public class MediaNotificationManager {

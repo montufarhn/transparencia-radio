@@ -1,4 +1,4 @@
-package com.la87hn.la87laprimera.services;
+package com.transparencia.radiotransparencia.services;
 
 public class PlaybackStatus {
 

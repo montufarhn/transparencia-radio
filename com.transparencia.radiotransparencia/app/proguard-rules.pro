@@ -22,8 +22,8 @@
 
 # --- Rules for Gson ---
 # Keep the model classes that Gson uses for serialization/deserialization.
-# Replace 'com.la87hn.la87laprimera.models.**' with your app's models package if it's different.
--keep class com.la87hn.la87laprimera.models.** { *; }
+# Replace 'com.transparencia.radiotransparencia.models.**' with your app's models package if it's different.
+-keep class com.transparencia.radiotransparencia.models.** { *; }
 -keepattributes Signature
 
 # --- Rules for OkHttp / Retrofit ---

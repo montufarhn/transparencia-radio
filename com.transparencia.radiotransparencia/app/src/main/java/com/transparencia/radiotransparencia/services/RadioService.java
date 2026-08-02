@@ -1,4 +1,4 @@
-package com.la87hn.la87laprimera.services;
+package com.transparencia.radiotransparencia.services;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -41,10 +41,10 @@ import androidx.media3.exoplayer.upstream.DefaultBandwidthMeter;
 import androidx.media3.extractor.DefaultExtractorsFactory;
 import androidx.media3.extractor.ts.DefaultTsPayloadReaderFactory;
 
-import com.la87hn.la87laprimera.R;
-import com.la87hn.la87laprimera.activities.MainActivity;
-import com.la87hn.la87laprimera.utils.HttpsTrustManager;
-import com.la87hn.la87laprimera.utils.Tools;
+import com.transparencia.radiotransparencia.R;
+import com.transparencia.radiotransparencia.activities.MainActivity;
+import com.transparencia.radiotransparencia.utils.HttpsTrustManager;
+import com.transparencia.radiotransparencia.utils.Tools;
 
 import org.json.JSONArray;
 import org.json.JSONException;

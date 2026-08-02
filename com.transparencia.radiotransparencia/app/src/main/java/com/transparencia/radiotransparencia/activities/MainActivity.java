@@ -1,6 +1,6 @@
-package com.la87hn.la87laprimera.activities;
+package com.transparencia.radiotransparencia.activities;
 
-import static com.la87hn.la87laprimera.Config.ENABLE_AUTOPLAY;
+import static com.transparencia.radiotransparencia.Config.ENABLE_AUTOPLAY;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -34,13 +34,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.media3.common.util.UnstableApi;
 
-import com.la87hn.la87laprimera.Config;
-import com.la87hn.la87laprimera.R;
-import com.la87hn.la87laprimera.services.PlaybackStatus;
-import com.la87hn.la87laprimera.services.RadioManager;
-import com.la87hn.la87laprimera.services.RadioService;
-import com.la87hn.la87laprimera.utils.Constant;
-import com.la87hn.la87laprimera.utils.Tools;
+import com.transparencia.radiotransparencia.Config;
+import com.transparencia.radiotransparencia.R;
+import com.transparencia.radiotransparencia.services.PlaybackStatus;
+import com.transparencia.radiotransparencia.services.RadioManager;
+import com.transparencia.radiotransparencia.services.RadioService;
+import com.transparencia.radiotransparencia.utils.Constant;
+import com.transparencia.radiotransparencia.utils.Tools;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.button.MaterialButton;

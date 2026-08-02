@@ -4,11 +4,11 @@ plugins {
 
 android {
 
-    namespace 'com.la87hn.la87laprimera'
+    namespace 'com.transparencia.radiotransparencia'
     compileSdk 36
 
     defaultConfig {
-        applicationId "com.la87hn.la87laprimera"
+        applicationId "com.transparencia.radiotransparencia"
         minSdkVersion 21
         targetSdk 36
         versionCode 15
