@@ -91,7 +91,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="D:\Downloads\poder deportivo logo 2026.png" />
+                                                <entry key="imagePath" value="D:\Documents\Github\transparencia-radio\img\logo.png" />
                                                 <entry key="scalingPercent" value="60" />
                                               </map>
                                             </option>
@@ -169,7 +169,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="7c0c0c" />
+                                      <entry key="backgroundColor" value="ffffff" />
                                     </map>
                                   </option>
                                 </PersistentState>

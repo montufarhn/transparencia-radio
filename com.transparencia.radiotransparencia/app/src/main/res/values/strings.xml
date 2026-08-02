@@ -46,7 +46,7 @@
     <string name="navigation_drawer_close">Cerrar el menú de navegación</string>
     <string name="unknown_song">Canción Desconocida</string>
     <string name="unknown_artist">Artista Desconocido</string>
-    <string name="now_playing">Reproduciendo Ahora</string>
+    <string name="now_playing">103.1 FM Radio Transparencia</string>
     <string name="please_wait">Por Favor Espera</string>
     <string name="app_share_msg">Déjame recomendarte esta aplicación\n\n</string>
 </resources>
