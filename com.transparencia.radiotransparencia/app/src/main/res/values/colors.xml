@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="color_light_primary">#1494B9</color> <!-- COLOR DE LA PARTE DE ARRIBA  -->
+    <color name="color_light_primary">#F46F20</color> <!-- COLOR DE LA PARTE DE ARRIBA  -->
     <color name="color_light_status_bar">#1494B9</color>
     <color name="color_light_accent">#1494B9</color>
     <color name="color_light_background">#1494B9</color>
-    <color name="color_navigation_bar">#1494B9</color> <!-- COLOR DE BARRA DE ABAJO -->
+    <color name="color_navigation_bar">#F46F20</color> <!-- COLOR DE BARRA DE ABAJO -->
     <color name="color_navigation_drawer_selected_item">#D5E5E5</color>
 
     <color name="color_image_tint">#B4000000</color>

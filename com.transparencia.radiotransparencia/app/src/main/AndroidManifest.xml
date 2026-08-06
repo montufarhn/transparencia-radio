@@ -21,6 +21,7 @@
         android:required="false" />
 
     <application
+        android:intentMatchingFlags="enforceIntentFilter"
         android:memtagMode="async"
         tools:replace="android:allowBackup"
         android:allowBackup="true"
@@ -33,7 +34,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="n">
+        tools:targetApi="36"
+        tools:ignore="UnusedAttribute">
 
         <activity
             android:name=".activities.MainActivity"
