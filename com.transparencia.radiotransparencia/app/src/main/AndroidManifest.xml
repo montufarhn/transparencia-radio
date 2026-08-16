@@ -21,6 +21,7 @@
         android:required="false" />
 
     <application
+        android:enableOnBackInvokedCallback="true"
         android:intentMatchingFlags="enforceIntentFilter"
         android:memtagMode="async"
         tools:replace="android:allowBackup"
@@ -56,11 +57,15 @@
             android:exported="false"/>
 
         <receiver android:name="androidx.media.session.MediaButtonReceiver"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+
+        <property
+            android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY"
+            android:value="true" />
 
     </application>
 
